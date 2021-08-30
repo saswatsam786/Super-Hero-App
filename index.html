@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+
+    <title>Super-Hero App</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div>
+          <img src="/images/icon-gif.gif" alt="icon" width="70" height="70" />
+        </div>
+      </nav>
+    </header>
+    <section>
+      <form action="GET">
+        <input
+          class="form-control"
+          type="text"
+          placeholder="Search Your Super-Hero"
+          aria-label="default input example"
+          id="form-control"
+        />
+        <button type="button" class="btn btn-dark">Favourites</button>
+      </form>
+    </section>
+    <section class="cards" id="cards">
+      <div class="card" style="width: 18rem">
+        <img
+          src="https://www.superherodb.com/pictures2/portraits/10/100/1496.jpg"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">Batman</h5>
+          <ul class="card-text">
+            <li>Full Name: <span> Bruce Wayne</span></li>
+            <li>Birth Place: <span> Gotham City</span></li>
+            <li>Powerstats: <span> 400</span></li>
+            <li>First Appearance: <span> Detective Comics #27</span></li>
+          </ul>
+          <a href="#" class="btn btn-dark">Add To Favourites</a>
+        </div>
+      </div>
+    </section>
+    <hr />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
