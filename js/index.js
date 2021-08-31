@@ -7,21 +7,19 @@ const url = `https://www.superheroapi.com/api.php/${apiKey}/search/`;
 
 let form = document.getElementById("form-control");
 
-form.addEventListener("input", (e) => {
+form.addEventListener("keyup", (e) => {
   const searchString = e.target.value;
   let str = form.value;
   console.log("Searching For: ", searchString);
   if (searchString.length < 3)
     document.getElementById("cards").innerHTML = "Add at least 3 characters";
   else {
-    document.getElementById("cards").innerHTML = "";
-    setTimeout(getData(searchString), 10000);
+    setTimeout(getData(searchString), 1000);
   }
 });
 
 // let char = prompt("Enter character");
-
-async function getData(str) {
+function getData(str) {
   console.log("Started getData");
   let url1 = url + str;
   fetch(url1)
@@ -32,23 +30,43 @@ async function getData(str) {
     .then((data) => {
       console.log(data["results"]);
       let obj = data["results"];
-      view(obj);
+      rendering(obj);
     });
 }
 
-let cards = document.getElementById("cards");
+function rendering(obj) {
+  var results = document.getElementById("cards");
+  results.remove();
 
-function view(obj) {
-  let cardinfo;
+  let container = document.getElementById("container");
+  var results = document.createElement("div");
+  results.id = "cards";
+  results.className = "cards";
+  container.appendChild(results);
   obj.forEach((element) => {
-    cardinfo += `<div class="card" style="width: 18rem">
+    console.log(element.name);
+    results.appendChild(getCard(element));
+
+    console.log(results);
+  });
+}
+
+function getCard(element) {
+  let cards = document.createElement("div");
+  cards.classList = "h-100";
+  cards.classList = "card";
+  cards.style.width = "18rem";
+
+  console.log(element);
+
+  cards.innerHTML = `
     <img
       src=${JSON.stringify(element["image"].url)}
       class="card-img-top"
       alt="..."
     />
     <div class="card-body">
-      <h5 class="card-title">${JSON.stringify(element["name"])}</h5>
+      <h5 class="card-title">${element["name"]}</h5>
       <ul class="card-text">
         <li>Full Name: <span> ${JSON.stringify(
           element["biography"]["full-name"]
@@ -67,14 +85,17 @@ function view(obj) {
               6
           )
         )}</span></li>
-        <li>${JSON.stringify(
+        <li>First Appearance: <span>${JSON.stringify(
           element["biography"]["first-appearance"]
         )}</span></li>
       </ul>
-      <a href="#" class="btn btn-dark">Add To Favourites</a>
-    </div>`;
-    cards.innerHTML = cardinfo;
+      <button onclick={handleFavClick()} class="btn btn-dark" >Add To Favourites</button>
+    `;
 
-    console.log(cards);
-  });
+  return cards;
+}
+
+function handleFavClick(element) {
+  console.log(element);
+  console.log("working");
 }

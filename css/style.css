@@ -24,7 +24,7 @@ nav {
 }
 
 form {
-  width: 45vw;
+  width: 70vw;
   display: flex;
   margin: 20px auto;
 }
@@ -103,4 +103,8 @@ form > button {
 .card-text li span {
   font-weight: 400;
   font-size: medium;
+}
+
+#cards {
+  color: white;
 }
